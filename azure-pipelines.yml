@@ -29,10 +29,10 @@ stages:
         repository: 'rohan150699 / testangular'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-    - task: PublishBuildArtifacts@1
+    - task: PublishPipelineArtifact@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'artifact'
-        publishLocation: 'Container'
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'artifact'
+        publishLocation: 'pipeline'
     
         
