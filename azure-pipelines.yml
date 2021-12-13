@@ -29,6 +29,7 @@ stages:
         repository: 'rohan150699 / testangular'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        tags: t1
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Pipeline.Workspace)'
