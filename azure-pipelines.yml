@@ -3,10 +3,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- master
+- azure-pipelines
 
-resources:
-- repo: self
+#resources:
+#- repo: self
 
 variables:
   tag: '$(Build.BuildId)'
