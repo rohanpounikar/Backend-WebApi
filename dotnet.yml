@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: dotnet
-        image: rohan150699/test2
+        image: rohan150699/testangular:t1
         resources:
           limits:
             memory: "128Mi"
