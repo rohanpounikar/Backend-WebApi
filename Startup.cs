@@ -33,12 +33,12 @@ namespace UserAPI
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllHeaders",
-                builder =>
+                      builder =>
                   {
-                    builder.AllowAnyOrigin()
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
-                  });
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                     });
              });
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddDbContext<UserContext>(o => o.UseSqlite("Data source=users.db"));
