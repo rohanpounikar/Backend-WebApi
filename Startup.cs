@@ -29,17 +29,7 @@ namespace UserAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllHeaders",
-                      builder =>
-                  {
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyMethod();
-                     });
-             });
+            services.AddCors();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddDbContext<UserContext>(o => o.UseSqlite("Data source=users.db"));
             services.AddControllers();
@@ -56,7 +46,6 @@ namespace UserAPI
             app.UseCors(o => o.WithOrigins("http://localhost:8001")
             //app.UseCors(o => o.WithOrigins("http://20.92.217.131:8001/")
             //app.UseCors(o => o.WithOrigins("http://localhost:56221/")
-            app.UseCors("AllowAllHeaders");
             .AllowAnyMethod()
             .AllowAnyHeader());
 
