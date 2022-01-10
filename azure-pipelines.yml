@@ -5,8 +5,8 @@
 trigger:
 - master
 
-resources:
-- repo: self
+#resources:
+#- repo: self
 
 variables:
   tag: '$(Build.BuildId)'
@@ -20,10 +20,29 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: Docker@2
-      displayName: Build an image
+    - task: DotNetCoreCLI@2
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+        command: 'restore'
+        feedsToUse: 'select'
+        arguments: 
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+    - task: DockerInstaller@0
+      inputs:
+        dockerVersion: '17.09.0-ce'
+    
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'connection'
+        repository: 'rohan150699 / testangular'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: t1
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'artifact'
+        publishLocation: 'pipeline'
+    
+        
