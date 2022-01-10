@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- azure-pipelines
+- master
 
 #resources:
 #- repo: self
@@ -46,3 +46,4 @@ stages:
         publishLocation: 'pipeline'
     
         
+
