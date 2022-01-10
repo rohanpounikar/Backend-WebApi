@@ -40,10 +40,12 @@ namespace UserAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
 
-            app.UseCors(o => o.WithOrigins("http://localhost:8001")
+            //app.UseCors(o => o.WithOrigins("http://localhost:8001")
+            app.UseCors(o => o.WithOrigins("http://20.92.217.131:8001")
+            //app.UseCors(o => o.WithOrigins("http://localhost:56221/")
             .AllowAnyMethod()
             .AllowAnyHeader());
 
